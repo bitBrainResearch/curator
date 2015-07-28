@@ -18,5 +18,7 @@ namespace curator.Models
 
         [DataType(DataType.MultilineText)]
         public string Code { get; set; }
+
+        
     }
 }
