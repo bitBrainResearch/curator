@@ -9,6 +9,7 @@ namespace curator.Models
 {
     public class CodeSnippet
     {
+        // Annoying
         [Key] public int SnippetID { get; set; }
 
         public string Title { get; set; }
