@@ -1,6 +1,3 @@
-// CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: http://codemirror.net/LICENSE
-
 /*
  * =====================================================================================
  *
@@ -16,16 +13,6 @@
  *
  * =====================================================================================
  */
-
-(function(mod) {
-  if (typeof exports == "object" && typeof module == "object") // CommonJS
-    mod(require("../../lib/codemirror"));
-  else if (typeof define == "function" && define.amd) // AMD
-    define(["../../lib/codemirror"], mod);
-  else // Plain browser env
-    mod(CodeMirror);
-})(function(CodeMirror) {
-"use strict";
 
 CodeMirror.defineMode("asterisk", function() {
   var atoms    = ["exten", "same", "include","ignorepat","switch"],
@@ -65,7 +52,8 @@ CodeMirror.defineMode("asterisk", function() {
 
   function basicToken(stream,state){
     var cur = '';
-    var ch = stream.next();
+    var ch  = '';
+    ch = stream.next();
     // comment
     if(ch == ";") {
       stream.skipToEnd();
@@ -135,6 +123,7 @@ CodeMirror.defineMode("asterisk", function() {
     token: function(stream, state) {
 
       var cur = '';
+      var ch  = '';
       if(stream.eatSpace()) return null;
       // extension started
       if(state.extenStart){
@@ -168,7 +157,7 @@ CodeMirror.defineMode("asterisk", function() {
       } else if(state.extenPriority) {
         state.extenPriority = false;
         state.extenApplication = true;
-        stream.next(); // get comma
+        ch = stream.next(); // get comma
         if(state.extenSame) return null;
         stream.eatWhile(/[^,]/);
         return "number";
@@ -192,5 +181,3 @@ CodeMirror.defineMode("asterisk", function() {
 });
 
 CodeMirror.defineMIME("text/x-asterisk", "asterisk");
-
-});

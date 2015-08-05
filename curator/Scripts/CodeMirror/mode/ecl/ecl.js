@@ -1,16 +1,3 @@
-// CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: http://codemirror.net/LICENSE
-
-(function(mod) {
-  if (typeof exports == "object" && typeof module == "object") // CommonJS
-    mod(require("../../lib/codemirror"));
-  else if (typeof define == "function" && define.amd) // AMD
-    define(["../../lib/codemirror"], mod);
-  else // Plain browser env
-    mod(CodeMirror);
-})(function(CodeMirror) {
-"use strict";
-
 CodeMirror.defineMode("ecl", function(config) {
 
   function words(str) {
@@ -34,6 +21,7 @@ CodeMirror.defineMode("ecl", function(config) {
   var blockKeywords = words("catch class do else finally for if switch try while");
   var atoms = words("true false null");
   var hooks = {"#": metaHook};
+  var multiLineStrings;
   var isOperatorChar = /[+\-*&%=<>!?|\/]/;
 
   var curPunc;
@@ -111,7 +99,7 @@ CodeMirror.defineMode("ecl", function(config) {
         if (next == quote && !escaped) {end = true; break;}
         escaped = !escaped && next == "\\";
       }
-      if (end || !escaped)
+      if (end || !(escaped || multiLineStrings))
         state.tokenize = tokenBase;
       return "string";
     };
@@ -202,5 +190,3 @@ CodeMirror.defineMode("ecl", function(config) {
 });
 
 CodeMirror.defineMIME("text/x-ecl", "ecl");
-
-});
