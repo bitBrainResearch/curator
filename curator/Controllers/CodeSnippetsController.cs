@@ -10,17 +10,20 @@ using curator.Models;
 
 namespace curator.Controllers
 {
+    
     public class CodeSnippetsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CodeSnippets
+        [Route("snippet/Index")]
         public ActionResult Index()
         {
             return View(db.CodeSnippets.ToList());
         }
 
         // GET: CodeSnippets/Details/5
+        [Route("snippet/{id:int}")]
         public ActionResult Details(int? id)
         {
             if (id == null)

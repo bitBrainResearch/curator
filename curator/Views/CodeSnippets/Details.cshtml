@@ -9,9 +9,27 @@
 <div>
     <h4>CodeSnippet</h4>
     <hr />
+    
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+        <div class="panel-body">
+            <div class="col-md-4" style="padding-right:20px; border-right: 1px solid #ccc;">
+                @Html.DisplayFor(model => model.Description)
+            </div>
+            <div class="col-md-8">
+                @Html.DisplayFor(model => model.Code)
+            </div>
+        </div>
+    </div>
+
+    <!--
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+             @Html.DisplayNameFor(model => model.Title)
         </dt>
 
         <dd>
@@ -35,6 +53,8 @@
         </dd>
 
     </dl>
+
+        -->
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.SnippetID }) |
