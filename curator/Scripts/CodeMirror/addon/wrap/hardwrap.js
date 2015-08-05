@@ -1,4 +1,14 @@
-(function() {
+// CodeMirror, copyright (c) by Marijn Haverbeke and others
+// Distributed under an MIT license: http://codemirror.net/LICENSE
+
+(function(mod) {
+  if (typeof exports == "object" && typeof module == "object") // CommonJS
+    mod(require("../../lib/codemirror"));
+  else if (typeof define == "function" && define.amd) // AMD
+    define(["../../lib/codemirror"], mod);
+  else // Plain browser env
+    mod(CodeMirror);
+})(function(CodeMirror) {
   "use strict";
 
   var Pos = CodeMirror.Pos;
@@ -36,7 +46,7 @@
     var killTrailing = options.killTrailingSpace !== false;
     var changes = [], curLine = "", curNo = from.line;
     var lines = cm.getRange(from, to, false);
-    if (!lines.length) return false;
+    if (!lines.length) return null;
     var leadingSpace = lines[0].match(/^[ \t]*/)[0];
 
     for (var i = 0; i < lines.length; ++i) {
@@ -56,7 +66,7 @@
           findBreakPoint(curLine, column, wrapOn, killTrailing);
         // If this isn't broken, or is broken at a different point, remove old break
         if (!firstBreak || firstBreak.from != oldLen || firstBreak.to != oldLen + spaceInserted) {
-          changes.push({text: spaceInserted ? " " : "",
+          changes.push({text: [spaceInserted ? " " : ""],
                         from: Pos(curNo, oldLen),
                         to: Pos(curNo + 1, spaceTrimmed.length)});
         } else {
@@ -66,7 +76,7 @@
       }
       while (curLine.length > column) {
         var bp = findBreakPoint(curLine, column, wrapOn, killTrailing);
-        changes.push({text: "\n" + leadingSpace,
+        changes.push({text: ["", leadingSpace],
                       from: Pos(curNo, bp.from),
                       to: Pos(curNo, bp.to)});
         curLine = leadingSpace + curLine.slice(bp.to);
@@ -79,7 +89,7 @@
         cm.replaceRange(change.text, change.from, change.to);
       }
     });
-    return changes.length > 0;
+    return changes.length ? {from: changes[0].from, to: CodeMirror.changeEnd(changes[changes.length - 1])} : null;
   }
 
   CodeMirror.defineExtension("wrapParagraph", function(pos, options) {
@@ -88,6 +98,24 @@
     var para = findParagraph(this, pos, options);
     return wrapRange(this, Pos(para.from, 0), Pos(para.to - 1), options);
   });
+
+  CodeMirror.commands.wrapLines = function(cm) {
+    cm.operation(function() {
+      var ranges = cm.listSelections(), at = cm.lastLine() + 1;
+      for (var i = ranges.length - 1; i >= 0; i--) {
+        var range = ranges[i], span;
+        if (range.empty()) {
+          var para = findParagraph(cm, range.head, {});
+          span = {from: Pos(para.from, 0), to: Pos(para.to - 1)};
+        } else {
+          span = {from: range.from(), to: range.to()};
+        }
+        if (span.to.line >= at) continue;
+        at = span.from.line;
+        wrapRange(cm, span.from, span.to, {});
+      }
+    });
+  };
 
   CodeMirror.defineExtension("wrapRange", function(from, to, options) {
     return wrapRange(this, from, to, options || {});
@@ -108,4 +136,4 @@
     });
     return madeChange;
   });
-})();
+});

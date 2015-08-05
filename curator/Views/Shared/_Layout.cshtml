@@ -21,16 +21,18 @@
         
     </script>
 
-    <script src="Scripts/CodeMirror/lib/codemirror.js"></script>
-    <link rel="stylesheet" href="Scripts/CodeMirror/lib/codemirror.css">
-    <script src="Scripts/CodeMirror/mode/javascript/javascript.js"></script>
+    <script src="~/Scripts/CodeMirror/lib/codemirror.js"></script>
+
+    <link href="~/Scripts/CodeMirror/theme/eclipse.css" rel="stylesheet" />
+    <script src="~/Scripts/CodeMirror/mode/clike/clike.js"></script>
+    <link href="~/Scripts/CodeMirror/lib/codemirror.css" rel="stylesheet" />
+    
+    
 
     
 </head>
 <body>
-
-    
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -48,11 +50,9 @@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
-
-            
         </div>
-        
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />

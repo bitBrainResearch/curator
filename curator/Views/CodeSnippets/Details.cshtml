@@ -4,12 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
 <div>
-    <h4>CodeSnippet</h4>
+    <h2>Details</h2>
     <hr />
-    
+
 
 
     <div class="panel panel-default">
@@ -17,11 +16,22 @@
             @Html.DisplayFor(model => model.Title)
         </div>
         <div class="panel-body">
-            <div class="col-md-4" style="padding-right:20px; border-right: 1px solid #ccc;">
+            <div class="col-md-4">
                 @Html.DisplayFor(model => model.Description)
             </div>
-            <div class="col-md-8">
-                @Html.DisplayFor(model => model.Code)
+            <div class="col-md-8" style="padding-right:20px; border-left: 1px solid #ccc;">
+
+                <textarea id="code" name="code">@Html.DisplayFor(model => model.Code)</textarea>
+                <script>
+            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "text/x-csharp",
+                theme: "eclipse",
+                readOnly: "nocursor"
+            });
+                </script> 
+                
             </div>
         </div>
     </div>
