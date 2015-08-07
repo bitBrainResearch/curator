@@ -199,6 +199,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508070740444_initial.cs" />
+    <Compile Include="Migrations\201508070740444_initial.Designer.cs">
+      <DependentUpon>201508070740444_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508070821109_publicname.cs" />
+    <Compile Include="Migrations\201508070821109_publicname.Designer.cs">
+      <DependentUpon>201508070821109_publicname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508070839358_Birthdate.cs" />
+    <Compile Include="Migrations\201508070839358_Birthdate.Designer.cs">
+      <DependentUpon>201508070839358_Birthdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Annotation.cs" />
     <Compile Include="Models\CodeSnippet.cs" />
@@ -534,7 +547,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CodeSnippet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -546,6 +558,17 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508070740444_initial.resx">
+      <DependentUpon>201508070740444_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508070821109_publicname.resx">
+      <DependentUpon>201508070821109_publicname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508070839358_Birthdate.resx">
+      <DependentUpon>201508070839358_Birthdate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
