@@ -211,12 +211,24 @@
     <Compile Include="Migrations\201508070839358_Birthdate.Designer.cs">
       <DependentUpon>201508070839358_Birthdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508071749066_CodeSNippetModded.cs" />
+    <Compile Include="Migrations\201508071749066_CodeSNippetModded.Designer.cs">
+      <DependentUpon>201508071749066_CodeSNippetModded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508071829179_AddedOtherDataClasses.cs" />
+    <Compile Include="Migrations\201508071829179_AddedOtherDataClasses.Designer.cs">
+      <DependentUpon>201508071829179_AddedOtherDataClasses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Annotation.cs" />
     <Compile Include="Models\CodeSnippet.cs" />
+    <Compile Include="Models\DiscussionPost.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Repository\CodeSnippetRespository.cs" />
+    <Compile Include="Models\Repository\Repository.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -569,6 +581,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508070839358_Birthdate.resx">
       <DependentUpon>201508070839358_Birthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508071749066_CodeSNippetModded.resx">
+      <DependentUpon>201508071749066_CodeSNippetModded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508071829179_AddedOtherDataClasses.resx">
+      <DependentUpon>201508071829179_AddedOtherDataClasses.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

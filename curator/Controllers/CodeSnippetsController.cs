@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using curator.Models;
+using curator.Models.Repository;
 
 namespace curator.Controllers
 {
@@ -15,11 +16,14 @@ namespace curator.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        CodeSnippetRepository repository = new CodeSnippetRepository();
+
+
         // GET: CodeSnippets
         [Route("CodeSnippets/Index")]
         public ActionResult Index()
         {
-            return View(db.CodeSnippets.ToList());
+            return View(repository.GetAll());
         }
 
 
@@ -32,7 +36,7 @@ namespace curator.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CodeSnippet codeSnippet = db.CodeSnippets.Find(id);
+            CodeSnippet codeSnippet = repository.Get(id);
             if (codeSnippet == null)
             {
                 return HttpNotFound();
@@ -55,8 +59,8 @@ namespace curator.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CodeSnippets.Add(codeSnippet);
-                db.SaveChanges();
+                repository.Add(codeSnippet);
+                repository.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -87,6 +91,7 @@ namespace curator.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(codeSnippet).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

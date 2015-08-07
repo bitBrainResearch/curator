@@ -19,6 +19,13 @@ namespace curator.Models
         [DataType(DataType.MultilineText)]
         public string Code { get; set; }
 
+        public string Language { get; set; }
+
+        public string UserName { get; set; }
+
+        public virtual List<DiscussionPost> Posts { get; set; }
+
+        public virtual List<Rating> Ratings { get; set; }
         
     }
 }
