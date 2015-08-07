@@ -51,13 +51,15 @@
         </dd>
 
     </dl>
+    <ul>
+        @foreach (var post in Model.Posts)
+        {
+            <li>@Html.ActionLink(@post.Subject, "../DiscussionPosts/Details", new {id = post.DiscussionPostID})</li>
+        }
+    </ul>
+
 </div>
-<ul>
-    @foreach (var post in Model.Posts)
-    {
-        <li>@post.Subject</li>
-    }
-</ul>
+
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CodeSnippetID }) |

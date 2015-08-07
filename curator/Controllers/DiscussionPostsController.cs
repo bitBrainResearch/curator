@@ -17,7 +17,8 @@ namespace curator.Controllers
         // GET: DiscussionPosts
         public ActionResult Index()
         {
-            return View(db.DiscussionPosts.ToList());
+            var discussionPosts = db.DiscussionPosts.Include(d => d.CodeSnippet);
+            return View(discussionPosts.ToList());
         }
 
         // GET: DiscussionPosts/Details/5
@@ -38,6 +39,7 @@ namespace curator.Controllers
         // GET: DiscussionPosts/Create
         public ActionResult Create()
         {
+            ViewBag.CodeSnippetID = new SelectList(db.CodeSnippets, "CodeSnippetID", "Title");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace curator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DiscussionPostID,UserName,Subject,BodyText,DateCreated,DateEdited")] DiscussionPost discussionPost)
+        public ActionResult Create([Bind(Include = "DiscussionPostID,CodeSnippetID,UserName,Subject,BodyText,DateCreated,DateEdited")] DiscussionPost discussionPost)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace curator.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CodeSnippetID = new SelectList(db.CodeSnippets, "CodeSnippetID", "Title", discussionPost.CodeSnippetID);
             return View(discussionPost);
         }
 
@@ -70,6 +73,7 @@ namespace curator.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CodeSnippetID = new SelectList(db.CodeSnippets, "CodeSnippetID", "Title", discussionPost.CodeSnippetID);
             return View(discussionPost);
         }
 
@@ -78,7 +82,7 @@ namespace curator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DiscussionPostID,UserName,Subject,BodyText,DateCreated,DateEdited")] DiscussionPost discussionPost)
+        public ActionResult Edit([Bind(Include = "DiscussionPostID,CodeSnippetID,UserName,Subject,BodyText,DateCreated,DateEdited")] DiscussionPost discussionPost)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace curator.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CodeSnippetID = new SelectList(db.CodeSnippets, "CodeSnippetID", "Title", discussionPost.CodeSnippetID);
             return View(discussionPost);
         }
 

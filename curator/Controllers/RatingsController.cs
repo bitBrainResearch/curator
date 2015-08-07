@@ -17,7 +17,8 @@ namespace curator.Controllers
         // GET: Ratings
         public ActionResult Index()
         {
-            return View(db.Ratings.ToList());
+            var ratings = db.Ratings.Include(r => r.CodeSnippet);
+            return View(ratings.ToList());
         }
 
         // GET: Ratings/Details/5
@@ -38,6 +39,7 @@ namespace curator.Controllers
         // GET: Ratings/Create
         public ActionResult Create()
         {
+            ViewBag.CodeSnippetID = new SelectList(db.CodeSnippets, "CodeSnippetID", "Title");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace curator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RatingID,UserName,Clarity,Efficiency,Maintainability,Aesthetics,Overall")] Rating rating)
+        public ActionResult Create([Bind(Include = "RatingID,CodeSnippetID,UserName,Clarity,Efficiency,Maintainability,Aesthetics,Overall")] Rating rating)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace curator.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CodeSnippetID = new SelectList(db.CodeSnippets, "CodeSnippetID", "Title", rating.CodeSnippetID);
             return View(rating);
         }
 
@@ -70,6 +73,7 @@ namespace curator.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CodeSnippetID = new SelectList(db.CodeSnippets, "CodeSnippetID", "Title", rating.CodeSnippetID);
             return View(rating);
         }
 
@@ -78,7 +82,7 @@ namespace curator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RatingID,UserName,Clarity,Efficiency,Maintainability,Aesthetics,Overall")] Rating rating)
+        public ActionResult Edit([Bind(Include = "RatingID,CodeSnippetID,UserName,Clarity,Efficiency,Maintainability,Aesthetics,Overall")] Rating rating)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace curator.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CodeSnippetID = new SelectList(db.CodeSnippets, "CodeSnippetID", "Title", rating.CodeSnippetID);
             return View(rating);
         }
 
