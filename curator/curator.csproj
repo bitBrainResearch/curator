@@ -194,8 +194,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CodeSnippetsController.cs" />
+    <Compile Include="Controllers\DiscussionPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,6 +221,26 @@
     <Compile Include="Migrations\201508071829179_AddedOtherDataClasses.Designer.cs">
       <DependentUpon>201508071829179_AddedOtherDataClasses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508071932130_ScrewedAroundWithCodeSnippetID.cs" />
+    <Compile Include="Migrations\201508071932130_ScrewedAroundWithCodeSnippetID.Designer.cs">
+      <DependentUpon>201508071932130_ScrewedAroundWithCodeSnippetID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508072011199_RemovingForeignKeysTilIFigureThemOut.cs" />
+    <Compile Include="Migrations\201508072011199_RemovingForeignKeysTilIFigureThemOut.Designer.cs">
+      <DependentUpon>201508072011199_RemovingForeignKeysTilIFigureThemOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508072032501_fixforrelations.cs" />
+    <Compile Include="Migrations\201508072032501_fixforrelations.Designer.cs">
+      <DependentUpon>201508072032501_fixforrelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508072053374_moreRelations.cs" />
+    <Compile Include="Migrations\201508072053374_moreRelations.Designer.cs">
+      <DependentUpon>201508072053374_moreRelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508072129147_relationsagain.cs" />
+    <Compile Include="Migrations\201508072129147_relationsagain.Designer.cs">
+      <DependentUpon>201508072129147_relationsagain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Annotation.cs" />
@@ -229,7 +251,6 @@
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Repository\CodeSnippetRespository.cs" />
     <Compile Include="Models\Repository\Repository.cs" />
-    <Compile Include="Models\Score.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -557,6 +578,16 @@
     <Content Include="Views\CodeSnippets\Edit.cshtml" />
     <Content Include="Views\CodeSnippets\Index.cshtml" />
     <Content Include="Views\Manage\UserProfile.cshtml" />
+    <Content Include="Views\DiscussionPosts\Create.cshtml" />
+    <Content Include="Views\DiscussionPosts\Delete.cshtml" />
+    <Content Include="Views\DiscussionPosts\Details.cshtml" />
+    <Content Include="Views\DiscussionPosts\Edit.cshtml" />
+    <Content Include="Views\DiscussionPosts\Index.cshtml" />
+    <Content Include="Views\Ratings\Create.cshtml" />
+    <Content Include="Views\Ratings\Delete.cshtml" />
+    <Content Include="Views\Ratings\Details.cshtml" />
+    <Content Include="Views\Ratings\Edit.cshtml" />
+    <Content Include="Views\Ratings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -587,6 +618,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508071829179_AddedOtherDataClasses.resx">
       <DependentUpon>201508071829179_AddedOtherDataClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508071932130_ScrewedAroundWithCodeSnippetID.resx">
+      <DependentUpon>201508071932130_ScrewedAroundWithCodeSnippetID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508072011199_RemovingForeignKeysTilIFigureThemOut.resx">
+      <DependentUpon>201508072011199_RemovingForeignKeysTilIFigureThemOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508072032501_fixforrelations.resx">
+      <DependentUpon>201508072032501_fixforrelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508072053374_moreRelations.resx">
+      <DependentUpon>201508072053374_moreRelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508072129147_relationsagain.resx">
+      <DependentUpon>201508072129147_relationsagain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

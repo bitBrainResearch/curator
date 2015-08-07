@@ -13,7 +13,8 @@ namespace curator.Models
         public int DiscussionPostID { get; set; }
 
         public int CodeSnippetID { get; set; }
-
+        public virtual CodeSnippet CodeSnippet { get; set; }
+        
         [Required]
         public string UserName { get; set; }
 

@@ -10,107 +10,107 @@ using curator.Models;
 
 namespace curator.Controllers
 {
-    public class CodeSnippetsController : Controller
+    public class RatingsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: CodeSnippets
+        // GET: Ratings
         public ActionResult Index()
         {
-            return View(db.CodeSnippets.ToList());
+            return View(db.Ratings.ToList());
         }
 
-        // GET: CodeSnippets/Details/5
+        // GET: Ratings/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CodeSnippet codeSnippet = db.CodeSnippets.Find(id);
-            if (codeSnippet == null)
+            Rating rating = db.Ratings.Find(id);
+            if (rating == null)
             {
                 return HttpNotFound();
             }
-            return View(codeSnippet);
+            return View(rating);
         }
 
-        // GET: CodeSnippets/Create
+        // GET: Ratings/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CodeSnippets/Create
+        // POST: Ratings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CodeSnippetID,Title,Description,Code,Language,UserName")] CodeSnippet codeSnippet)
+        public ActionResult Create([Bind(Include = "RatingID,UserName,Clarity,Efficiency,Maintainability,Aesthetics,Overall")] Rating rating)
         {
             if (ModelState.IsValid)
             {
-                db.CodeSnippets.Add(codeSnippet);
+                db.Ratings.Add(rating);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(codeSnippet);
+            return View(rating);
         }
 
-        // GET: CodeSnippets/Edit/5
+        // GET: Ratings/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CodeSnippet codeSnippet = db.CodeSnippets.Find(id);
-            if (codeSnippet == null)
+            Rating rating = db.Ratings.Find(id);
+            if (rating == null)
             {
                 return HttpNotFound();
             }
-            return View(codeSnippet);
+            return View(rating);
         }
 
-        // POST: CodeSnippets/Edit/5
+        // POST: Ratings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CodeSnippetID,Title,Description,Code,Language,UserName")] CodeSnippet codeSnippet)
+        public ActionResult Edit([Bind(Include = "RatingID,UserName,Clarity,Efficiency,Maintainability,Aesthetics,Overall")] Rating rating)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(codeSnippet).State = EntityState.Modified;
+                db.Entry(rating).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(codeSnippet);
+            return View(rating);
         }
 
-        // GET: CodeSnippets/Delete/5
+        // GET: Ratings/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CodeSnippet codeSnippet = db.CodeSnippets.Find(id);
-            if (codeSnippet == null)
+            Rating rating = db.Ratings.Find(id);
+            if (rating == null)
             {
                 return HttpNotFound();
             }
-            return View(codeSnippet);
+            return View(rating);
         }
 
-        // POST: CodeSnippets/Delete/5
+        // POST: Ratings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CodeSnippet codeSnippet = db.CodeSnippets.Find(id);
-            db.CodeSnippets.Remove(codeSnippet);
+            Rating rating = db.Ratings.Find(id);
+            db.Ratings.Remove(rating);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

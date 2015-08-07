@@ -11,6 +11,7 @@ namespace curator.Models
         public int RatingID { get; set; }
 
         public int CodeSnippetID { get; set; }
+        public virtual CodeSnippet CodeSnippet { get; set; }
 
         public string UserName { get; set; }
 

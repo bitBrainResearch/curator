@@ -1,0 +1,63 @@
+﻿@model IEnumerable<curator.Models.Rating>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clarity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Efficiency)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Maintainability)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aesthetics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Overall)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clarity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Efficiency)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Maintainability)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aesthetics)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Overall)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RatingID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RatingID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RatingID })
+        </td>
+    </tr>
+}
+
+</table>

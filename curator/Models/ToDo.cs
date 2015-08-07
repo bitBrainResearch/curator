@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace curator.Models
 {
-    class Score
+    public class ToDo
     {
-
+        public string title { get; set; }
+        public string text { get; set; }
     }
 }

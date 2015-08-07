@@ -10,107 +10,107 @@ using curator.Models;
 
 namespace curator.Controllers
 {
-    public class CodeSnippetsController : Controller
+    public class DiscussionPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: CodeSnippets
+        // GET: DiscussionPosts
         public ActionResult Index()
         {
-            return View(db.CodeSnippets.ToList());
+            return View(db.DiscussionPosts.ToList());
         }
 
-        // GET: CodeSnippets/Details/5
+        // GET: DiscussionPosts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CodeSnippet codeSnippet = db.CodeSnippets.Find(id);
-            if (codeSnippet == null)
+            DiscussionPost discussionPost = db.DiscussionPosts.Find(id);
+            if (discussionPost == null)
             {
                 return HttpNotFound();
             }
-            return View(codeSnippet);
+            return View(discussionPost);
         }
 
-        // GET: CodeSnippets/Create
+        // GET: DiscussionPosts/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CodeSnippets/Create
+        // POST: DiscussionPosts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CodeSnippetID,Title,Description,Code,Language,UserName")] CodeSnippet codeSnippet)
+        public ActionResult Create([Bind(Include = "DiscussionPostID,UserName,Subject,BodyText,DateCreated,DateEdited")] DiscussionPost discussionPost)
         {
             if (ModelState.IsValid)
             {
-                db.CodeSnippets.Add(codeSnippet);
+                db.DiscussionPosts.Add(discussionPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(codeSnippet);
+            return View(discussionPost);
         }
 
-        // GET: CodeSnippets/Edit/5
+        // GET: DiscussionPosts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CodeSnippet codeSnippet = db.CodeSnippets.Find(id);
-            if (codeSnippet == null)
+            DiscussionPost discussionPost = db.DiscussionPosts.Find(id);
+            if (discussionPost == null)
             {
                 return HttpNotFound();
             }
-            return View(codeSnippet);
+            return View(discussionPost);
         }
 
-        // POST: CodeSnippets/Edit/5
+        // POST: DiscussionPosts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CodeSnippetID,Title,Description,Code,Language,UserName")] CodeSnippet codeSnippet)
+        public ActionResult Edit([Bind(Include = "DiscussionPostID,UserName,Subject,BodyText,DateCreated,DateEdited")] DiscussionPost discussionPost)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(codeSnippet).State = EntityState.Modified;
+                db.Entry(discussionPost).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(codeSnippet);
+            return View(discussionPost);
         }
 
-        // GET: CodeSnippets/Delete/5
+        // GET: DiscussionPosts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CodeSnippet codeSnippet = db.CodeSnippets.Find(id);
-            if (codeSnippet == null)
+            DiscussionPost discussionPost = db.DiscussionPosts.Find(id);
+            if (discussionPost == null)
             {
                 return HttpNotFound();
             }
-            return View(codeSnippet);
+            return View(discussionPost);
         }
 
-        // POST: CodeSnippets/Delete/5
+        // POST: DiscussionPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CodeSnippet codeSnippet = db.CodeSnippets.Find(id);
-            db.CodeSnippets.Remove(codeSnippet);
+            DiscussionPost discussionPost = db.DiscussionPosts.Find(id);
+            db.DiscussionPosts.Remove(discussionPost);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
