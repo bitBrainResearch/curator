@@ -544,6 +544,7 @@
     <Content Include="Views\CodeSnippets\Details.cshtml" />
     <Content Include="Views\CodeSnippets\Edit.cshtml" />
     <Content Include="Views\CodeSnippets\Index.cshtml" />
+    <Content Include="Views\Manage\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

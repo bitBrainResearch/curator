@@ -16,11 +16,13 @@ namespace curator.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CodeSnippets
-        [Route("snippet/Index")]
+        [Route("CodeSnippets/Index")]
         public ActionResult Index()
         {
             return View(db.CodeSnippets.ToList());
         }
+
+
 
         // GET: CodeSnippets/Details/5
         [Route("snippet/{id:int}")]

@@ -76,6 +76,21 @@ namespace curator.Controllers
         }
 
         //
+        // GET: /Manage/UserProfile
+        public async Task<ActionResult> UserProfile()
+        {
+            
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var bd = user.BirthDate.ToString();
+
+            ViewBag.bd = user.BirthDate.ToString();
+            
+            return View();
+        }
+
+
+
+        //
         // POST: /Manage/RemoveLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
