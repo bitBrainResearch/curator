@@ -6,35 +6,52 @@
 
 <h2>Index</h2>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    
-}
+
 
 @foreach (var item in Model)
 {
-    <hr />
-<div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                @Html.DisplayFor(modelItem => item.Title)
+            </h2>
+            <h3 class="panel-title" style="margin-left:20px;">
+                written by @Html.DisplayFor(modelItem => item.UserName)
+            </h3>
+            <h3 class="panel-title" style="margin-left:20px;">
+                @Html.DisplayFor(modelItem => item.Language)
+            </h3>
+               
+            
+        </div>
+        <div class="panel-body">
+            @Html.DisplayFor(modelItem => item.Description)
+            
+        </div>
+        <div style="margin-left:30px;">
+            @if (item.UserName == User.Identity.Name)
+                {
+                @Html.ActionLink("Edit |", "Edit", new { id = item.CodeSnippetID })
+            }
+            @Html.ActionLink("Details", "Details", new { id = item.CodeSnippetID })
+            @if (item.UserName == User.Identity.Name)
+                {
+                @Html.ActionLink("| Delete", "Delete", new { id = item.CodeSnippetID })
+            }
+        </div>
+    </div>
+    
+
+    
+
+
+}
+
+@if (User.Identity.IsAuthenticated)
+{
     <p>
-        @Html.DisplayFor(modelItem => item.Title)  |  @Html.DisplayFor(modelItem => item.UserName)  |  @Html.DisplayFor(modelItem => item.Language)
+        @Html.ActionLink("Post New Snippet", "Create")
     </p>
-    <p>
-        @Html.DisplayFor(modelItem => item.Description)
-    </p>
-</div>
-<div>
-    @if (item.UserName == User.Identity.Name)
-    {
-        @Html.ActionLink("Edit |", "Edit", new { id = item.CodeSnippetID })
-    }
-    @Html.ActionLink("Details", "Details", new { id = item.CodeSnippetID })
-    @if (item.UserName == User.Identity.Name)
-    {
-        @Html.ActionLink("| Delete", "Delete", new { id = item.CodeSnippetID })
-    }
-</div>
 
 }
