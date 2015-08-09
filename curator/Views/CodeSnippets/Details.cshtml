@@ -5,61 +5,59 @@
     var UserName = Model.UserName;
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>CodeSnippet</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">
             @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Code)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Language)
-        </dt>
-
-        <dd>
+        </h2>
+        <h3 class="panel-title" style="margin-left:20px;">
+            written by @Html.DisplayFor(model => model.UserName)
+        </h3>
+        <h3 class="panel-title" style="margin-left:20px;">
             @Html.DisplayFor(model => model.Language)
-        </dd>
+        </h3>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+    </div>
+    <div class="panel-body">
+        <div>
+            @Html.DisplayFor(model => model.Description)
+        </div>
+        <p />
+        <div>
+            @Html.DisplayFor(model => model.Code)
+        </div>
 
-    </dl>
-    <ul>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            Posts
+        </h2>
+    </div>
+    <div class="panel-body">
         @foreach (var post in Model.Posts)
         {
-            <li>@Html.ActionLink(@post.Subject, "../DiscussionPosts/Details", new {id = post.DiscussionPostID})</li>
-        }
-    </ul>
+            if (post.CodeSnippetID == Model.CodeSnippetID)
+            {
+                <div>
+                    @Html.ActionLink(@post.Subject, "../DiscussionPosts/Details", new { id = post.DiscussionPostID }) by @post.UserName.  Written on @post.DateCreated.  Last edited on @post.DateEdited.
+                </div>
+                <p />
 
+            }
+        }
+
+    </div>
 </div>
+
+
+
+
+
 
 
 <p>
