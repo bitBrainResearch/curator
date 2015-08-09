@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    var UserName = Model.UserName;
 }
 
 <h2>Details</h2>
@@ -62,6 +63,9 @@
 
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CodeSnippetID }) |
+    @if (@UserName == User.Identity.Name)
+    {
+        @Html.ActionLink("Edit |", "Edit", new { id = Model.CodeSnippetID })
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>

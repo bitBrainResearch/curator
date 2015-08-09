@@ -6,52 +6,35 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Code)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Language)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Language)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CodeSnippetID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CodeSnippetID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodeSnippetID })
-        </td>
-    </tr>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    
 }
 
-</table>
+@foreach (var item in Model)
+{
+    <hr />
+<div>
+    <p>
+        @Html.DisplayFor(modelItem => item.Title)  |  @Html.DisplayFor(modelItem => item.UserName)  |  @Html.DisplayFor(modelItem => item.Language)
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => item.Description)
+    </p>
+</div>
+<div>
+    @if (item.UserName == User.Identity.Name)
+    {
+        @Html.ActionLink("Edit |", "Edit", new { id = item.CodeSnippetID })
+    }
+    @Html.ActionLink("Details", "Details", new { id = item.CodeSnippetID })
+    @if (item.UserName == User.Identity.Name)
+    {
+        @Html.ActionLink("| Delete", "Delete", new { id = item.CodeSnippetID })
+    }
+</div>
+
+}

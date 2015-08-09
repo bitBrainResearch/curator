@@ -46,8 +46,9 @@ namespace curator.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CodeSnippetID,Title,Description,Code,Language,UserName")] CodeSnippet codeSnippet)
+        public ActionResult Create([Bind(Include = "CodeSnippetID,Title,Description,Code,Language")] CodeSnippet codeSnippet)
         {
+            codeSnippet.UserName = User.Identity.Name;
             if (ModelState.IsValid)
             {
                 db.CodeSnippets.Add(codeSnippet);
