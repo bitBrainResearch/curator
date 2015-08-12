@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "Details";
     var UserName = Model.UserName;
+    
+
+    
 }
+
+
 
 <div class="panel panel-primary">
     <div class="panel-heading">
@@ -43,22 +48,37 @@
             {
                 <div class="panel panel-success">
                     <div class="panel-heading">
+                        <script type="text/javascript">
+                            window.onload = function () {
+                                $("button").click(function () {
+                                    $("#"+ this.id + ".panel-collapse").toggleClass("collapse");
+                                })
+                                };
+                            
+                        </script>
+                        <button id="@post.DiscussionPostID">+</button>
+                        
+
                         @Html.ActionLink(@post.Subject, "../DiscussionPosts/Details", new { id = post.DiscussionPostID })
                         
                     </div>
-                    <div class="panel panel-warning">
-                        <div class="panel-heading panel-warning" style="text-indent:20px;text-decoration:underline">
-                            by @post.UserName
-                        </div>
-                    </div>
-                    <div class="panel-body panel-collapse">
-                        <div>
-                            @post.BodyText
-                        </div>
+                    <div id="@post.DiscussionPostID" class="panel panel-collapse collapse">
                         
-                    </div>
-                    <div class="panel-footer" style="text-indent:20px;">
-                        on @post.DateCreated.Month/@post.DateCreated.Day/@post.DateCreated.Year at @post.DateCreated.ToLongTimeString()
+                        <div class="panel panel-warning">
+                            <div class="panel-heading panel-warning" style="text-indent:20px;text-decoration:underline">
+                                by @post.UserName
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <div>
+                                @post.BodyText
+                            </div>
+
+                        </div>
+                        <div class="panel-footer" style="text-indent:20px;">
+                            on @post.DateCreated.Month/@post.DateCreated.Day/@post.DateCreated.Year at @post.DateCreated.ToLongTimeString()
+                        </div>
                     </div>
                 </div>
 
