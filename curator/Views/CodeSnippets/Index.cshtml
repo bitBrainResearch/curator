@@ -8,36 +8,32 @@
 
 
 
-<h2>Index</h2>
+<h2>Snippets</h2>
 
 @foreach (var item in Model)
 {
     <div class="panel panel-default">
-        <div class="panel-body">
-            <p>
-                @Html.DisplayFor(modelItem => item.Title)
-            </p>
-            <p>
-                written by @Html.DisplayFor(modelItem => item.UserName)
-            </p>
-            <p>
-                @Html.DisplayFor(modelItem => item.Language)
-            </p>
-
-                <div style="margin-left:30px;">
-                    @if (item.UserName == User.Identity.Name)
-                {
-                        @Html.ActionLink("Edit |", "Edit", new { id = item.CodeSnippetID })
-                    }
-                    @Html.ActionLink("Details", "Details", new { id = item.CodeSnippetID })
-                    @if (item.UserName == User.Identity.Name)
-                {
-                        @Html.ActionLink("| Delete", "Delete", new { id = item.CodeSnippetID })
-                    }
-                </div>
+        <div class="panel-heading">
+            @Html.ActionLink(item.Title, "Details", new { id = item.CodeSnippetID })
+<!--            @Html.DisplayFor(modelItem => item.Title) -->
             
         </div>
-    </div>
+        <div class="panel-body">
+            <div style="margin-left:20px;">
+                @Html.DisplayFor(modelItem => item.UserName) in @Html.DisplayFor(modelItem => item.Language)
+                @if (item.UserName == User.Identity.Name)
+                {
+                    @Html.ActionLink("| Edit ", "Edit", new { id = item.CodeSnippetID })
+                }
+
+                @if (item.UserName == User.Identity.Name)
+                {
+                    @Html.ActionLink("| Delete", "Delete", new { id = item.CodeSnippetID })
+                }
+            </div> 
+        </div>
+  </div>
+
 
 
 
