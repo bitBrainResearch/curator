@@ -10,37 +10,36 @@
 
 <h2>Snippets</h2>
 
-@foreach (var item in Model)
-{
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            @Html.ActionLink(item.Title, "Details", new { id = item.CodeSnippetID })
-<!--            @Html.DisplayFor(modelItem => item.Title) -->
-            
-        </div>
-        <div class="panel-body">
-            <div style="margin-left:20px;">
-                @Html.DisplayFor(modelItem => item.UserName) in @Html.DisplayFor(modelItem => item.Language)
-                @if (item.UserName == User.Identity.Name)
-                {
-                    @Html.ActionLink("| Edit ", "Edit", new { id = item.CodeSnippetID })
-                }
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Language</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
 
-                @if (item.UserName == User.Identity.Name)
-                {
-                    @Html.ActionLink("| Delete", "Delete", new { id = item.CodeSnippetID })
-                }
-            </div> 
-        </div>
-  </div>
+                <tr>
+                    <td>@Html.ActionLink(item.Title, "Details", new { id = item.CodeSnippetID })</td>
+                    <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Language)</td>
+                    <td>
+                        @if (item.UserName == User.Identity.Name)
+                        {
+                            @Html.ActionLink("Edit ", "Edit", new { id = item.CodeSnippetID })
+                            @Html.ActionLink("| Delete", "Delete", new { id = item.CodeSnippetID })
+                        }
+                    </td>
+                </tr>
+            }
 
-
-
-
-
-
-
-}
+            </tbody>
+        </table>
+    </div>
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -49,3 +48,7 @@
     </p>
 
 }
+
+
+
+ 

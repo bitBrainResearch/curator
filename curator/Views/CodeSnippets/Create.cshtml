@@ -14,6 +14,8 @@
         <h4>CodeSnippet</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!--Get the title-->
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -22,6 +24,7 @@
             </div>
         </div>
 
+        <!--Get the description-->
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -30,6 +33,7 @@
             </div>
         </div>
 
+        <!--Get the code-->
         <div class="form-group">
             @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -38,7 +42,21 @@
             </div>
         </div>
 
+        <!--Get the Language-->
+        <script>
+            window.onload = function () {
+                var options = [];
+                $.getJSON("/JsonData/Languages.json", function (data) {
+                    $.each(data, function (key, val) {
+                        options.push("<option='" + key + "'>" + val + "<option>");
+                    });
+
+                    $("#theSelect").html(options.join(""));
+                });
+            }
+        </script>
         <div class="form-group">
+            <select id="theSelect"></select>
             @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Language, new { htmlAttributes = new { @class = "form-control" } })

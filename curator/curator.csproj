@@ -408,6 +408,7 @@
     <Content Include="Scripts\CodeMirror\mode\livescript\index.html" />
     <Content Include="Scripts\CodeMirror\mode\livescript\livescript.js" />
     <Content Include="Scripts\CodeMirror\mode\livescript\livescript.ls" />
+    <Content Include="JsonData\Languages.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\CodeMirror\mode\lua\index.html" />
     <Content Include="Scripts\CodeMirror\mode\lua\lua.js" />
