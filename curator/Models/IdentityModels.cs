@@ -40,5 +40,7 @@ namespace curator.Models
         public System.Data.Entity.DbSet<curator.Models.DiscussionPost> DiscussionPosts { get; set; }
 
         public System.Data.Entity.DbSet<curator.Models.Rating> Ratings { get; set; }
+
+        
     }
 }
