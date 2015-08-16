@@ -7,13 +7,13 @@ namespace curator.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ScrewedAroundWithCodeSnippetID : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ScrewedAroundWithCodeSnippetID));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201508071932130_ScrewedAroundWithCodeSnippetID"; }
+            get { return "201508162116070_init"; }
         }
         
         string IMigrationMetadata.Source

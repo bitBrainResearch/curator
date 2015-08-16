@@ -9,7 +9,7 @@ namespace curator.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(curator.Models.ApplicationDbContext context)

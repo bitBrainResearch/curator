@@ -201,49 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508070740444_initial.cs" />
-    <Compile Include="Migrations\201508070740444_initial.Designer.cs">
-      <DependentUpon>201508070740444_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508070821109_publicname.cs" />
-    <Compile Include="Migrations\201508070821109_publicname.Designer.cs">
-      <DependentUpon>201508070821109_publicname.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508070839358_Birthdate.cs" />
-    <Compile Include="Migrations\201508070839358_Birthdate.Designer.cs">
-      <DependentUpon>201508070839358_Birthdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508071749066_CodeSNippetModded.cs" />
-    <Compile Include="Migrations\201508071749066_CodeSNippetModded.Designer.cs">
-      <DependentUpon>201508071749066_CodeSNippetModded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508071829179_AddedOtherDataClasses.cs" />
-    <Compile Include="Migrations\201508071829179_AddedOtherDataClasses.Designer.cs">
-      <DependentUpon>201508071829179_AddedOtherDataClasses.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508071932130_ScrewedAroundWithCodeSnippetID.cs" />
-    <Compile Include="Migrations\201508071932130_ScrewedAroundWithCodeSnippetID.Designer.cs">
-      <DependentUpon>201508071932130_ScrewedAroundWithCodeSnippetID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508072011199_RemovingForeignKeysTilIFigureThemOut.cs" />
-    <Compile Include="Migrations\201508072011199_RemovingForeignKeysTilIFigureThemOut.Designer.cs">
-      <DependentUpon>201508072011199_RemovingForeignKeysTilIFigureThemOut.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508072032501_fixforrelations.cs" />
-    <Compile Include="Migrations\201508072032501_fixforrelations.Designer.cs">
-      <DependentUpon>201508072032501_fixforrelations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508072053374_moreRelations.cs" />
-    <Compile Include="Migrations\201508072053374_moreRelations.Designer.cs">
-      <DependentUpon>201508072053374_moreRelations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508072129147_relationsagain.cs" />
-    <Compile Include="Migrations\201508072129147_relationsagain.Designer.cs">
-      <DependentUpon>201508072129147_relationsagain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508072238434_relationsagain1.cs" />
-    <Compile Include="Migrations\201508072238434_relationsagain1.Designer.cs">
-      <DependentUpon>201508072238434_relationsagain1.cs</DependentUpon>
+    <Compile Include="Migrations\201508162116070_init.cs" />
+    <Compile Include="Migrations\201508162116070_init.Designer.cs">
+      <DependentUpon>201508162116070_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -259,6 +219,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-curator-20150725051130.mdf" />
+    <Content Include="App_Data\aspnet-curator-20150725051130_log.ldf">
+      <DependentUpon>aspnet-curator-20150725051130.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Default\bootstrap.css" />
     <Content Include="Content\Default\bootstrap.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -597,7 +561,6 @@
     <Content Include="Views\Ratings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\OtherThemes\" />
   </ItemGroup>
   <ItemGroup>
@@ -612,38 +575,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508070740444_initial.resx">
-      <DependentUpon>201508070740444_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508070821109_publicname.resx">
-      <DependentUpon>201508070821109_publicname.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508070839358_Birthdate.resx">
-      <DependentUpon>201508070839358_Birthdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508071749066_CodeSNippetModded.resx">
-      <DependentUpon>201508071749066_CodeSNippetModded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508071829179_AddedOtherDataClasses.resx">
-      <DependentUpon>201508071829179_AddedOtherDataClasses.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508071932130_ScrewedAroundWithCodeSnippetID.resx">
-      <DependentUpon>201508071932130_ScrewedAroundWithCodeSnippetID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508072011199_RemovingForeignKeysTilIFigureThemOut.resx">
-      <DependentUpon>201508072011199_RemovingForeignKeysTilIFigureThemOut.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508072032501_fixforrelations.resx">
-      <DependentUpon>201508072032501_fixforrelations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508072053374_moreRelations.resx">
-      <DependentUpon>201508072053374_moreRelations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508072129147_relationsagain.resx">
-      <DependentUpon>201508072129147_relationsagain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508072238434_relationsagain1.resx">
-      <DependentUpon>201508072238434_relationsagain1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508162116070_init.resx">
+      <DependentUpon>201508162116070_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
