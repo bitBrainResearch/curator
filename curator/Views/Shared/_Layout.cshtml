@@ -21,13 +21,17 @@
         
     </script>
 
-    
+    <script src="~/Scripts/CodeMirror/lib/codemirror.js"></script>
+    <link href="~/Scripts/CodeMirror/lib/codemirror.css" rel="stylesheet" />
+
+    <link href="~/Scripts/CodeMirror/theme/ambiance.css" rel="stylesheet" />
 
     
+
 </head>
 <body>
 
-    
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -47,9 +51,9 @@
                 @Html.Partial("_LoginPartial")
             </div>
 
-            
+
         </div>
-        
+
     </div>
     <div class="container body-content" style="margin-top:75px;">
         @RenderBody()
@@ -63,8 +67,31 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    
+    <script type="text/javascript">
+        window.onload = function () {
+            
+            if ($("#codesnippet_editable").length > 0) {
+                var editor_editable = CodeMirror.fromTextArea($('#codesnippet_editable')[0], {
+                    lineNumbers: true,
+                    theme: "ambiance",
+                    readOnly: true
+                });
+            }
 
+            if ($("#codesnippet_readonly").length > 0) {
+                var editor_readonly = CodeMirror.fromTextArea($('#codesnippet_readonly')[0], {
+                    lineNumbers: true,
+                    theme: "ambiance",
+                    readOnly: true
+                });
+            }
+
+            $("button").click(function () {
+                $("#" + this.id + ".panel-collapse").toggleClass("collapse");
+            })
+        };
+    </script>
+    
 
 </body>
 </html>
