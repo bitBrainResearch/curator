@@ -23,9 +23,15 @@
 
     <script src="~/Scripts/CodeMirror/lib/codemirror.js"></script>
     <link href="~/Scripts/CodeMirror/lib/codemirror.css" rel="stylesheet" />
-    
+
+    <script src="~/Scripts/CodeMirror/mode/clike/clike.js"></script>
 
     <link href="~/Scripts/CodeMirror/theme/elegant.css" rel="stylesheet" />
+    <script src="~/Scripts/CodeMirror/addon/edit/matchbrackets.js"></script>
+    <script src="~/Scripts/CodeMirror/addon/mode/loadmode.js"></script>
+
+
+    
 
 </head>
 <body>
@@ -66,6 +72,9 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/ckeditor/adapters/jquery.js"></script>
+
     <script type="text/javascript">
         window.onload = function () {
             
@@ -73,7 +82,8 @@
                 var editor_editable = CodeMirror.fromTextArea($('#codesnippet_editable')[0], {
                     lineNumbers: true,
                     theme: "elegant",
-                    readOnly: true
+                    readOnly: false,
+                    mode: "text/x-java"
                 });
             }
 
@@ -81,15 +91,21 @@
                 var editor_readonly = CodeMirror.fromTextArea($('#codesnippet_readonly')[0], {
                     lineNumbers: true,
                     theme: "elegant",
-                    readOnly: true
+                    readOnly: true,
+                    mode: "text/x-java"
                 });
             }
 
             $("button").click(function () {
                 $("#" + this.id + ".panel-collapse").toggleClass("collapse");
             })
+
+            $('#myTextArea').ckeditor();
+            
+            
         };
     </script>
+
     
 
 </body>

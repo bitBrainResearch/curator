@@ -8,11 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using curator.Models;
 
+
 namespace curator.Controllers
 {
     public class CodeSnippetsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
+        
+
+        public CodeSnippetsController()
+        {
+            
+        }
 
         // GET: CodeSnippets
         public ActionResult Index()

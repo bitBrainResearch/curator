@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "Details";
     var UserName = Model.UserName;
-    
 
-     
+
+
 }
 
 
@@ -14,79 +14,77 @@
     <div class="panel-heading">
         <h1 class="panel-title">
             @Html.DisplayFor(model => model.Title)
-            
         </h1>
-        <div class="panel panel-danger">
-            Written by @Html.DisplayFor(model => model.UserName) using @Html.DisplayFor(model => model.Language)
+    </div>
+    <div class="well well-sm">
+        Written by @Html.DisplayFor(model => model.UserName) using <b>@Html.DisplayFor(model => model.Language)</b>
+
+        <div style="margin-top:20px;margin-left:20px;margin-right:20px;border-width:1px;border-style:solid;border-color:black;padding:5px;background-color:#ffffff;">
+            @Html.DisplayFor(model => model.Description)
         </div>
         
             @if (@UserName == User.Identity.Name)
             {
-                <h3 class="panel panel-title" style="margin-left:20px;">
-                    <button>@Html.ActionLink("Edit", "Edit", new { id = Model.CodeSnippetID })</button>
-                </h3>
+                <div style="margin-left:20px;margin-top:10px">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.CodeSnippetID })
+                </div>
             }
-              
-
-
-    </div>
-    <div class="well well-sm">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="panel panel-body"  >
-        <form style="border: 1px solid black;">
+                
+        </div>
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">Left</button>
+            <button type="button" class="btn btn-default">Middle</button>
+            <button type="button" class="btn btn-default">Right</button>
+        </div>
+        <form style="border-width:1px;border-style:solid;border-color:black;padding:5px;background-color:#ffffff; margin-top:20px">
             <textarea rows="4" cols="30" id="codesnippet_editable">
                 @Html.DisplayFor(model => model.Code)
             </textarea>
         </form>
-    </div>
-</div>
 
 
-<div class="panel panel-success">
-    <div class="panel-heading">
-        <h2 class="panel-title">
-            Posts
-        </h2>
     </div>
-    <div class="panel-body">
-        @foreach (var post in Model.Posts)
-        {
-            if (post.CodeSnippetID == Model.CodeSnippetID)
+
+    <p />
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                Posts
+            </h2>
+        </div>
+        <div class="panel-body">
+            @foreach (var post in Model.Posts)
             {
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <script type="text/javascript">
-                            window.onload = function () {
-                                
-                                };
+                if (post.CodeSnippetID == Model.CodeSnippetID)
+                {
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
                             
-                        </script>
-                        <button id="@post.DiscussionPostID">+</button>
-                        
+                            <button id="@post.DiscussionPostID">+</button>
 
-                        @Html.ActionLink(@post.Subject, "../DiscussionPosts/Details", new { id = post.DiscussionPostID }) by @post.UserName on @post.DateCreated.Month/@post.DateCreated.Day/@post.DateCreated.Year at @post.DateCreated.ToLongTimeString()
-                        
-                    </div>
-                    <div id="@post.DiscussionPostID" class="panel panel-collapse collapse collapsible">
-                        
-                        
-                        <div class="panel-body">
-                            <div>
-                                @post.BodyText
+
+                            @Html.ActionLink(@post.Subject, "../DiscussionPosts/Details", new { id = post.DiscussionPostID }) by @post.UserName on @post.DateCreated.Month/@post.DateCreated.Day/@post.DateCreated.Year at @post.DateCreated.ToLongTimeString()
+
+                        </div>
+                        <div id="@post.DiscussionPostID" class="panel panel-collapse collapse collapsible">
+
+
+                            <div class="panel-body">
+                                <div>
+                                    @post.BodyText
+                                </div>
+
                             </div>
 
                         </div>
-                        
                     </div>
-                </div>
 
+                }
             }
-        }
 
+        </div>
     </div>
-</div>
 
 
 
@@ -94,6 +92,6 @@
 
 
 
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
