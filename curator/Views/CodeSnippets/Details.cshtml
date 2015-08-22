@@ -12,33 +12,34 @@
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h2 class="panel-title">
+        <h1 class="panel-title">
             @Html.DisplayFor(model => model.Title)
-        </h2>
-        <h3 class="panel-title" style="margin-left:20px;">
-            written by @Html.DisplayFor(model => model.UserName)
-        </h3>
-        <h3 class="panel-title" style="margin-left:20px;">
-            @Html.DisplayFor(model => model.Language)
-        </h3>
-    </div>
-    <div class="panel-body">
-        <div>
-            @Html.DisplayFor(model => model.Description)
-        </div>
-        <hr />
-        <div>
             
+        </h1>
+        <div class="panel panel-danger">
+            Written by @Html.DisplayFor(model => model.UserName) using @Html.DisplayFor(model => model.Language)
+        </div>
+        
+            @if (@UserName == User.Identity.Name)
+            {
+                <h3 class="panel panel-title" style="margin-left:20px;">
+                    <button>@Html.ActionLink("Edit", "Edit", new { id = Model.CodeSnippetID })</button>
+                </h3>
+            }
+              
 
-            <textarea rows="4" cols="50" id="codesnippet_editable">
+
+    </div>
+    <div class="well well-sm">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="panel panel-body"  >
+        <form style="border: 1px solid black;">
+            <textarea rows="4" cols="30" id="codesnippet_editable">
                 @Html.DisplayFor(model => model.Code)
             </textarea>
-
-            
-
-            
-        </div>
-
+        </form>
     </div>
 </div>
 
@@ -94,9 +95,5 @@
 
 
 <p>
-    @if (@UserName == User.Identity.Name)
-    {
-        @Html.ActionLink("Edit |", "Edit", new { id = Model.CodeSnippetID })
-    }
     @Html.ActionLink("Back to List", "Index")
 </p>

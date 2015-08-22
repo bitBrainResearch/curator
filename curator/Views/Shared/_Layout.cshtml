@@ -23,10 +23,9 @@
 
     <script src="~/Scripts/CodeMirror/lib/codemirror.js"></script>
     <link href="~/Scripts/CodeMirror/lib/codemirror.css" rel="stylesheet" />
-
-    <link href="~/Scripts/CodeMirror/theme/ambiance.css" rel="stylesheet" />
-
     
+
+    <link href="~/Scripts/CodeMirror/theme/elegant.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -73,7 +72,7 @@
             if ($("#codesnippet_editable").length > 0) {
                 var editor_editable = CodeMirror.fromTextArea($('#codesnippet_editable')[0], {
                     lineNumbers: true,
-                    theme: "ambiance",
+                    theme: "elegant",
                     readOnly: true
                 });
             }
@@ -81,7 +80,7 @@
             if ($("#codesnippet_readonly").length > 0) {
                 var editor_readonly = CodeMirror.fromTextArea($('#codesnippet_readonly')[0], {
                     lineNumbers: true,
-                    theme: "ambiance",
+                    theme: "elegant",
                     readOnly: true
                 });
             }
