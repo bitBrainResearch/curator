@@ -20,7 +20,10 @@
         Written by @Html.DisplayFor(model => model.UserName) using <b>@Html.DisplayFor(model => model.Language)</b>
 
         <div style="margin-top:20px;margin-left:20px;margin-right:20px;border-width:1px;border-style:solid;border-color:black;padding:5px;background-color:#ffffff;">
+            @Html.TextAreaFor(model => model.Description, new { @id = "myTextArea" })
+            <!--
             @Html.DisplayFor(model => model.Description)
+                -->
         </div>
         
             @if (@UserName == User.Identity.Name)
