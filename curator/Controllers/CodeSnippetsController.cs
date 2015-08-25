@@ -85,6 +85,7 @@ namespace curator.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CodeSnippetID,Title,Description,Code,Language,UserName")] CodeSnippet codeSnippet)
         {
+            codeSnippet.UserName = User.Identity.Name;
             if (ModelState.IsValid)
             {
                 db.Entry(codeSnippet).State = EntityState.Modified;
